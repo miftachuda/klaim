@@ -3,12 +3,12 @@ let count = 1;
 async function fire() {
   // Set the path to your browser executable (Chrome or Chromium)
   const browser = await puppeteer.launch({
-    // executablePath:
-    //   "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe", // Replace this with the path to your Chrome or Chromium executable
-    // userDataDir:
-    //   "C:\\Users\\Miftachul\\AppData\\Local\\Microsoft\\Edge\\User Data",
-    executablePath: "/usr/bin/chromium-browser",
-    userDataDir: "/home/miftachul/.config/chromium",
+    executablePath:
+      "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe", // Replace this with the path to your Chrome or Chromium executable
+    userDataDir:
+      "C:\\Users\\Miftachul\\AppData\\Local\\Microsoft\\Edge\\User Data",
+    // executablePath: "/usr/bin/chromium-browser",
+    // userDataDir: "/home/miftachul/.config/chromium",
     headless: false, // Set to true if you don't need to see the browser UI
   });
 
@@ -28,10 +28,12 @@ async function fire() {
       if (text == "Klaim") {
         await button.click();
         console.log("clicked klaim");
-        await page.screenshot({ path: `${count}.png` });
+        await page.screenshot({ path: `${count}satu.png` });
         count++;
       } else {
         console.log("reloading");
+        await page.screenshot({ path: `${count}satu.png` });
+        count++;
         page.reload();
         await processPage();
       }

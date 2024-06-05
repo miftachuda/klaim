@@ -16,7 +16,7 @@ async function fire() {
 
   // Go to the URL
   await page.goto(
-    "https://www.tokopedia.com/rewards/kupon/detail/KK01JUNA",
+    "https://www.tokopedia.com/rewards/kupon/detail/KK01JUNC",
     {}
   );
   await processPage();
@@ -28,11 +28,11 @@ async function fire() {
       if (text == "Klaim") {
         await button.click();
         console.log("clicked klaim");
-        await page.screenshot({ path: `${count}.png` });
+        await page.screenshot({ path: `${count}dua.png` });
         count++;
       } else {
         console.log("reloading");
-        await page.screenshot({ path: `${count}.png` });
+        await page.screenshot({ path: `${count}dua.png` });
         count++;
         page.reload();
         await processPage();
