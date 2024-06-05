@@ -9,7 +9,7 @@ async function fire() {
     //   "C:\\Users\\Miftachul\\AppData\\Local\\Microsoft\\Edge\\User Data",
     executablePath: "/usr/bin/chromium-browser",
     userDataDir: "/home/miftachul/.config/chromium",
-    headless: false, // Set to true if you don't need to see the browser UI
+    headless: true, // Set to true if you don't need to see the browser UI
   });
 
   const page = await browser.newPage();
