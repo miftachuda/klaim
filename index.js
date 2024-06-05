@@ -1,12 +1,14 @@
 const puppeteer = require("puppeteer-core");
-
+let count = 1;
 async function fire() {
   // Set the path to your browser executable (Chrome or Chromium)
   const browser = await puppeteer.launch({
-    executablePath:
-      "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe", // Replace this with the path to your Chrome or Chromium executable
-    userDataDir:
-      "C:\\Users\\Miftachul\\AppData\\Local\\Microsoft\\Edge\\User Data",
+    // executablePath:
+    //   "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe", // Replace this with the path to your Chrome or Chromium executable
+    // userDataDir:
+    //   "C:\\Users\\Miftachul\\AppData\\Local\\Microsoft\\Edge\\User Data",
+    executablePath: "/usr/bin/chromium-browser",
+    userDataDir: "/home/miftachul/.config/chromium",
     headless: false, // Set to true if you don't need to see the browser UI
   });
 
@@ -14,12 +16,11 @@ async function fire() {
 
   // Go to the URL
   await page.goto(
-    "https://www.tokopedia.com/rewards/kupon/detail/KK01JUNA",
+    "https://www.tokopedia.com/rewards/kupon/detail/KK01JUNB",
     {}
   );
   await processPage();
   async function processPage() {
-    await page.waitForNetworkIdle;
     const buttonSelector = '[data-unify="Button"]';
     const button = await page.waitForSelector(buttonSelector);
     if (button) {
@@ -27,6 +28,8 @@ async function fire() {
       if (text == "Klaim") {
         await button.click();
         console.log("clicked klaim");
+        await page.screenshot({ path: `${count}.png` });
+        count++;
       } else {
         console.log("reloading");
         page.reload();
